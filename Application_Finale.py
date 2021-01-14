@@ -132,32 +132,7 @@ while testeur == 0:
     if chemin1F != '' and chemin2F != '' and chemin3F != '' and chemin4F != '':
         testeur = 1
 
-print('Chemin1', chemin1F)
-print('Chemin2', chemin2F)
-print('Chemin3', chemin3F)
-print('Chemin4', chemin4F)
-print('Module',module)
-
-
-
-
-nom1 = basename(chemin1F)
-nom2 = basename(chemin2F)
-nom3 = basename(chemin3F)
-nom4 = basename(chemin4F)
-
-print(nom1)
-print(nom2)
-print(nom3)
-print(nom4)
- 
-
-Chemin1 = r'C:\Users\jroua\Desktop\Test\Module_csv.csv'
-Chemin2 = r'C:\Users\jroua\Desktop\Test\Structure_csv.csv'
-Chemin3 = r'C:\Users\jroua\Desktop\Test\Description_csv.csv'
-Chemin4 = r'C:/Users/jroua/Desktop/Test/Ressources'
 nom_du_module = module
-
 
 CSV.CSV(chemin1F, chemin2F, chemin3F, chemin4F, nom_du_module)
 
@@ -165,4 +140,4 @@ print(os.getcwd())
 
 Fichier = os.getcwd() + '\\' + nom_du_module 
 
-ftp.uploaddossier(Fichier, nom_du_module)
+ftp.uploaddossier(Fichier)
