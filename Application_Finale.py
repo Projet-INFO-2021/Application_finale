@@ -156,7 +156,8 @@ Chemin1 = r'C:\Users\jroua\Desktop\Test\Module_csv.csv'
 Chemin2 = r'C:\Users\jroua\Desktop\Test\Structure_csv.csv'
 Chemin3 = r'C:\Users\jroua\Desktop\Test\Description_csv.csv'
 Chemin4 = r'C:/Users/jroua/Desktop/Test/Ressources'
-nom_du_module = 'CSI3_Projet_test_1'
+nom_du_module = module
+
 
 CSV.CSV(chemin1F, chemin2F, chemin3F, chemin4F, nom_du_module)
 
