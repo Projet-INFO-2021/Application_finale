@@ -116,9 +116,11 @@ def create_markdown(Module, Structure, Description, Ressources, nomModule):
 
 								line=("		- ["+lignes_SA[i_minOR][5]+"](/"+nomModule+'/'+chap+'/'+nom_activite+'/'+lignes_SA[i_minOR][5]+')\n')
 								writer.writelines(line)#écriture md
-
-								shutil.copy2(Ressources + '\\' + chap + '\\'+nom_activite+'\\'+lignes_SA[i_minOR][5],nomModule+'\\'+chap+'\\'+nom_activite)
-								#copie du fichier
+								if nom_sous_activite == '':
+									shutil.copy2(Ressources+'\\'+chap + '\\'+nom_activite+'\\'+lignes_SA[0][5],nomModule+'\\'+chap+'\\'+nom_activite)
+								else:
+									shutil.copy2(Ressources+'\\'+chap + '\\'+nom_activite+'\\'+ nom_sous_activite+'\\'+lignes_SA[0][5],nomModule+'\\'+chap+'\\'+nom_activite+'\\'+nom_sous_activite)
+							#copie du fichier
 
 								colonneOR_Copie.remove(min(colonneOR_Copie))#on retire l'ordre de la ressource gérée
 				else:#si ss-activité  
