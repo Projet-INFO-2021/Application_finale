@@ -100,12 +100,15 @@ def create_markdown(Module, Structure, Description, Ressources, nomModule):
 				colonneOR = [ligne[4] for ligne in lignes_SA]#ordres utiles
 				colonneOR_Copie = colonneOR[:]
 
-				if nom_sous_activite == '':#si pas de sous-activité
-					if lignes_SA != []:#s'il y a bien au moins une sous-activité
+				if nom_sous_activite == '' or lignes_SA[0][3] == '*':#si pas de sous-activité ou si fusion
+					if lignes_SA != []:#s'il y a bien au moins une ressource pour ''
 						if lignes_SA[0][4]=='_':#si ressource isolée
 							line=("		- ["+lignes_SA[0][5]+"]("+'/'+nomModule+'/'+chap+'/'+nom_activite+'/'+lignes_SA[0][5]+')\n')
 							writer.writelines(line)#écrit dans le md
-							shutil.copy2(Ressources+'\\'+chap + '\\'+nom_activite+'\\'+lignes_SA[0][5],nomModule+'\\'+chap+'\\'+nom_activite)
+							if nom_sous_activite == '':
+								shutil.copy2(Ressources+'\\'+chap + '\\'+nom_activite+'\\'+lignes_SA[0][5],nomModule+'\\'+chap+'\\'+nom_activite)
+							else:
+								shutil.copy2(Ressources+'\\'+chap + '\\'+nom_activite+'\\'+ nom_sous_activite+'\\'+lignes_SA[0][5],nomModule+'\\'+chap+'\\'+nom_activite+'\\'+nom_sous_activite)
 							#on copie le fichier correspondant
 						else:#si plusieurs ressources : calcul de l'ordre d'affichage
 							while colonneOR_Copie != []:#tant qu'il reste des ressources
@@ -113,15 +116,16 @@ def create_markdown(Module, Structure, Description, Ressources, nomModule):
 
 								line=("		- ["+lignes_SA[i_minOR][5]+"](/"+nomModule+'/'+chap+'/'+nom_activite+'/'+lignes_SA[i_minOR][5]+')\n')
 								writer.writelines(line)#écriture md
-
-								shutil.copy2(Ressources + '\\' + chap + '\\'+nom_activite+'\\'+lignes_SA[i_minOR][5],nomModule+'\\'+chap+'\\'+nom_activite)
-								#copie du fichier
+								if nom_sous_activite == '':
+									shutil.copy2(Ressources+'\\'+chap + '\\'+nom_activite+'\\'+lignes_SA[0][5],nomModule+'\\'+chap+'\\'+nom_activite)
+								else:
+									shutil.copy2(Ressources+'\\'+chap + '\\'+nom_activite+'\\'+ nom_sous_activite+'\\'+lignes_SA[0][5],nomModule+'\\'+chap+'\\'+nom_activite+'\\'+nom_sous_activite)
+							#copie du fichier
 
 								colonneOR_Copie.remove(min(colonneOR_Copie))#on retire l'ordre de la ressource gérée
-				else:#si ss-activité
-					line=("		- "+nom_sous_activite+"\n")
+				else:#si ss-activité  
+					line ="		- "+nom_sous_activite+"\n"
 					writer.writelines(line)#écriture md
-
 					path = os.path.join(nomModule + '\\' + chap +'\\'+ nom_activite,nom_sous_activite) 
 					os.mkdir(path)#création dossier
 

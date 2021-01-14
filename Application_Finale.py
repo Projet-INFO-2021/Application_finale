@@ -133,3 +133,9 @@ Chemin4 = r'C:/Users/jroua/Desktop/Test/Ressources'
 nom_du_module = 'CSI3_Projet_test_1'
 
 CSV.CSV(chemin1F, chemin2F, chemin3F, chemin4F, nom_du_module)
+
+print(os.getcwd())
+
+Fichier = os.getcwd() + '\\' + nom_du_module 
+
+ftp.uploaddossier(Fichier, nom_du_module)
