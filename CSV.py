@@ -118,7 +118,7 @@ def create_markdown(Module, Structure, Description, Ressources, nomModule):
 								#copie du fichier
 
 								colonneOR_Copie.remove(min(colonneOR_Copie))#on retire l'ordre de la ressource gérée
-				else:#si ss-activité   
+				else:#si ss-activité  
 					line ="		- "+nom_sous_activite+"\n"
 					writer.writelines(line)#écriture md
 					path = os.path.join(nomModule + '\\' + chap +'\\'+ nom_activite,nom_sous_activite) 
