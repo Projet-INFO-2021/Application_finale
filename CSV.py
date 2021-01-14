@@ -105,7 +105,10 @@ def create_markdown(Module, Structure, Description, Ressources, nomModule):
 						if lignes_SA[0][4]=='_':#si ressource isolée
 							line=("		- ["+lignes_SA[0][5]+"]("+'/'+nomModule+'/'+chap+'/'+nom_activite+'/'+lignes_SA[0][5]+')\n')
 							writer.writelines(line)#écrit dans le md
-							shutil.copy2(Ressources+'\\'+chap + '\\'+nom_activite+'\\'+lignes_SA[0][5],nomModule+'\\'+chap+'\\'+nom_activite)
+							if nom_sous_activite == '':
+								shutil.copy2(Ressources+'\\'+chap + '\\'+nom_activite+'\\'+lignes_SA[0][5],nomModule+'\\'+chap+'\\'+nom_activite)
+							else:
+								shutil.copy2(Ressources+'\\'+chap + '\\'+nom_activite+'\\'+ nom_sous_activite+'\\'+lignes_SA[0][5],nomModule+'\\'+chap+'\\'+nom_activite+'\\'+nom_sous_activite)
 							#on copie le fichier correspondant
 						else:#si plusieurs ressources : calcul de l'ordre d'affichage
 							while colonneOR_Copie != []:#tant qu'il reste des ressources
