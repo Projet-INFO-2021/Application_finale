@@ -100,7 +100,7 @@ def create_markdown(Module, Structure, Description, Ressources, nomModule):
 				colonneOR = [ligne[4] for ligne in lignes_SA]#ordres utiles
 				colonneOR_Copie = colonneOR[:]
 
-				if nom_sous_activite == '' or lignes_SA[0][3] == '*':#si pas de sous-activité ou fusion
+				if nom_sous_activite == '' or lignes_SA[0][3] == '*':#si pas de sous-activité ou si fusion
 					if lignes_SA != []:#s'il y a bien au moins une ressource pour ''
 						if lignes_SA[0][4]=='_':#si ressource isolée
 							line=("		- ["+lignes_SA[0][5]+"]("+'/'+nomModule+'/'+chap+'/'+nom_activite+'/'+lignes_SA[0][5]+')\n')
