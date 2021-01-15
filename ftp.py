@@ -1,6 +1,6 @@
 import ftplib
 import os.path, os
-ftp = ftplib.FTP('localhost', 'julien', 'baty')     #connexion au serveur ftp (adresseIP, User, mdp)
+ftp = ftplib.FTP('192.168.43.87', 'user', '1234')     #connexion au serveur ftp (adresseIP, User, mdp)
                                 
 
 
