@@ -115,15 +115,15 @@ def create_markdown(Module, Structure, Description, Ressources, nomModule):
 							while colonneOR_Copie != []:#tant qu'il reste des ressources
 								i_minOR = find(colonneOR,min(colonneOR_Copie))[0]#indice de la prochaine ressource à gérer
 
-								line=("		- ["+lignes_SA[i_minOR][5]+"](/"+nomModule+'/'+chap+'/'+nom_activite+'/'+lignes_SA[i_minOR][5]+')\n')
-								writer.writelines(line)#écriture md
 								if nom_sous_activite == '':
-									shutil.copy2(Ressources+'\\'+chap + '\\'+nom_activite+'\\'+lignes_SA[0][5],nomModule+'\\'+chap+'\\'+nom_activite)
+									shutil.copy2(Ressources+'\\'+chap + '\\'+nom_activite+'\\'+lignes_SA[i_minOR][5],nomModule+'\\'+chap+'\\'+nom_activite)
+									line=("		- ["+lignes_SA[i_minOR][5]+"]("+'/'+nomModule+'/'+chap+'/'+nom_activite+'/'+lignes_SA[i_minOR][5]+')\n')
 								else:
-									shutil.copy2(Ressources+'\\'+chap + '\\'+nom_activite+'\\'+ nom_sous_activite+'\\'+lignes_SA[0][5],nomModule+'\\'+chap+'\\'+nom_activite+'\\'+nom_sous_activite)
-							#copie du fichier
+									shutil.copy2(Ressources+'\\'+chap + '\\'+nom_activite+'\\'+ nom_sous_activite+'\\'+lignes_SA[i_minOR][5],nomModule+'\\'+chap+'\\'+nom_activite+'\\'+nom_sous_activite)
+									line=("		- ["+lignes_SA[i_minOR][5]+"]("+'/'+nomModule+'/'+chap+'/'+nom_activite+'/'+nom_sous_activite+'/'+lignes_SA[i_minOR][5]+')\n')
+								writer.writelines(line)#écrit dans le md
 
-								colonneOR_Copie.remove(min(colonneOR_Copie))#on retire l'ordre de la ressource gérée
+							colonneOR_Copie.remove(min(colonneOR_Copie))#on retire l'ordre de la ressource gérée
 				else:#si ss-activité  
 					line ="		- "+nom_sous_activite+"\n"
 					writer.writelines(line)#écriture md
