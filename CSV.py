@@ -103,12 +103,13 @@ def create_markdown(Module, Structure, Description, Ressources, nomModule):
 				if nom_sous_activite == '' or lignes_SA[0][3] == '*':#si pas de sous-activité ou si fusion
 					if lignes_SA != []:#s'il y a bien au moins une ressource pour ''
 						if lignes_SA[0][4]=='_':#si ressource isolée
-							line=("		- ["+lignes_SA[0][5]+"]("+'/'+nomModule+'/'+chap+'/'+nom_activite+'/'+lignes_SA[0][5]+')\n')
-							writer.writelines(line)#écrit dans le md
 							if nom_sous_activite == '':
 								shutil.copy2(Ressources+'\\'+chap + '\\'+nom_activite+'\\'+lignes_SA[0][5],nomModule+'\\'+chap+'\\'+nom_activite)
+								line=("		- ["+lignes_SA[0][5]+"]("+'/'+nomModule+'/'+chap+'/'+nom_activite+'/'+lignes_SA[0][5]+')\n')
 							else:
 								shutil.copy2(Ressources+'\\'+chap + '\\'+nom_activite+'\\'+ nom_sous_activite+'\\'+lignes_SA[0][5],nomModule+'\\'+chap+'\\'+nom_activite+'\\'+nom_sous_activite)
+								line=("		- ["+lignes_SA[0][5]+"]("+'/'+nomModule+'/'+chap+'/'+nom_activite+'/'+nom_sous_activite+'/'+lignes_SA[0][5]+')\n')
+							writer.writelines(line)#écrit dans le md
 							#on copie le fichier correspondant
 						else:#si plusieurs ressources : calcul de l'ordre d'affichage
 							while colonneOR_Copie != []:#tant qu'il reste des ressources
