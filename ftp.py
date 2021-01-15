@@ -1,6 +1,6 @@
 import ftplib
 import os.path, os
-ftp = ftplib.FTP('localhost', 'julien', 'baty')     #connexion au serveur ftp (adresseIP, User, mdp)
+ftp = ftplib.FTP('192.168.43.87', 'user', '1234')     #connexion au serveur ftp (adresseIP, User, mdp)
                                 
 
 
@@ -63,13 +63,12 @@ def uploadrepftp(ftp, repertloc, repertftp, affiche=False):
 
 
 
-def uploaddossier(chemin,nomfichier):
+def uploaddossier(chemin):
 
     cheminF = chemin.replace('/','//')
     print(cheminF)
-    ftp.mkd(nomfichier) 
     repertloc = cheminF
-    repertftp = nomfichier # ce répertoire doit déjà exister. 
+    repertftp = 'content' # ce répertoire doit déjà exister. 
     fichiers = uploadrepftp(ftp, repertloc, repertftp, True)
 
     
