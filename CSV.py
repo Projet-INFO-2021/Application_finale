@@ -123,7 +123,7 @@ def create_markdown(Module, Structure, Description, Ressources, nomModule):
 									line=("		- ["+lignes_SA[i_minOR][5]+"]("+'/'+nomModule+'/'+chap+'/'+nom_activite+'/'+nom_sous_activite+'/'+lignes_SA[i_minOR][5]+')\n')
 								writer.writelines(line)#écrit dans le md
 
-							colonneOR_Copie.remove(min(colonneOR_Copie))#on retire l'ordre de la ressource gérée
+								colonneOR_Copie.remove(min(colonneOR_Copie))#on retire l'ordre de la ressource gérée
 				else:#si ss-activité  
 					line ="		- "+nom_sous_activite+"\n"
 					writer.writelines(line)#écriture md

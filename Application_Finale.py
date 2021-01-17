@@ -141,3 +141,5 @@ print(os.getcwd())
 Fichier = os.getcwd() + '\\' + nom_du_module 
 
 ftp.uploaddossier(Fichier)
+
+print('done')
